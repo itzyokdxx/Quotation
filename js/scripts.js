@@ -397,8 +397,8 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#add_user").before().html(
-						"<a href='../invoice/user-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new user</a>"+
-						"<a href='../invoice/user-list.php' class='btn btn-default'>Back to List</a>"
+						"<a href='./user-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new user</a>"+
+						"<a href='./user-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");
 				},
@@ -439,8 +439,8 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#add_product").before().html(
-						"<a href='../invoice/product-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new material</a>"+
-						"<a href='../invoice/product-list.php' class='btn btn-default'>Back to List</a>"
+						"<a href='./product-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new material</a>"+
+						"<a href='./product-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");
 				},
@@ -481,8 +481,8 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#create_customer").before().html(
-						"<a href='../invoice/customer-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new customer</a>"+
-						"<a href='../invoice/customer-list.php' class='btn btn-default'>Back to List</a>"
+						"<a href='./customer-add.php' class='btn btn-primary' style='margin-right: 10px;'>Create new customer</a>"+
+						"<a href='./customer-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");
 				},
@@ -524,8 +524,8 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#create_invoice").before().html(
-						"<a href='../invoice/invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new invoice</a>"+
-						"<a href='../invoice/invoice-list.php' class='btn btn-default'>Back to List</a>"
+						"<a href='./invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new invoice</a>"+
+						"<a href='./invoice-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");
 				},
