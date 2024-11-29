@@ -235,7 +235,7 @@ function getProducts() {
 
 		print '<table class="table table-striped table-hover table-bordered" id="data-table"><thead><tr>
 
-				<th>Product</th>
+				<th>Material</th>
 				<th>Description</th>
 				<th>Price</th>
 				<th>Action</th>
