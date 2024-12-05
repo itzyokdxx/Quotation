@@ -94,7 +94,7 @@ function getInvoiceId() {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$query = "SELECT invoice FROM invoices ORDER BY invoice DESC LIMIT 1";
+	$query = "SELECT invoice FROM invoices ORDER BY id DESC LIMIT 1";
 
 	if ($result = $mysqli->query($query)) {
 

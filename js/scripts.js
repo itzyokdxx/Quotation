@@ -322,7 +322,8 @@ $(document).ready(function() {
 	    
 	    var grandTotal = 0,
 	    	disc = 0,
-	    	c_ship = parseInt($('.calculate.shipping').val()) || 0;
+	    	c_ship = parseInt($('.calculate.shipping').val()) || 0,
+	    	vat_amt = parseInt($('#invoice_vat').val()) || 0;
 
 	    $('#invoice_table tbody tr').each(function() {
             var c_sbt = $('.calculate-sub', this).val(),
@@ -336,14 +337,15 @@ $(document).ready(function() {
 
         // VAT, DISCOUNT, SHIPPING, TOTAL, SUBTOTAL:
 	    var subT = parseFloat(grandTotal),
-	    	finalTotal = parseFloat(grandTotal + c_ship),
-	    	vat = parseInt($('.invoice-vat').attr('data-vat-rate'));
+	    	finalTotal = parseFloat(grandTotal + c_ship + vat_amt);
+	    	//vat = parseInt($('.invoice-vat').attr('data-vat-rate'));
 
 	    $('.invoice-sub-total').text(subT.toFixed(2));
 	    $('#invoice_subtotal').val(subT.toFixed(2));
         //$('.invoice-discount').text(disc.toFixed(2));
         //$('#invoice_discount').val(disc.toFixed(2));
 
+	    /*
         if($('.invoice-vat').attr('data-enable-vat') === '1') {
 
 	        if($('.invoice-vat').attr('data-vat-method') === '1') {
@@ -369,7 +371,10 @@ $(document).ready(function() {
             $('.invoice-total').text((finalTotal).toFixed(2));
             $('#invoice_total').val((finalTotal).toFixed(2));
 	    }
+	    */
 
+		$('.invoice-total').text((finalTotal).toFixed(2));
+		$('#invoice_total').val((finalTotal).toFixed(2));
 	}
 
 	function actionAddUser() {
@@ -428,13 +433,23 @@ $(document).ready(function() {
 
 			var $btn = $("#action_add_product").button("loading");
 
+			// Ensure `this` is the form element
+	        var formElement = $('#add_product')[0]; // Get the raw DOM form element
+	        var formData = new FormData(formElement); // Create FormData object
+
+			//$("#add_product").serialize()
+
 			$.ajax({
 
 				url: 'response.php',
 				type: 'POST',
-				data: $("#add_product").serialize(),
+				data: formData,
+		        contentType: false, // Prevent jQuery from overriding content type
+		        processData: false, // Prevent jQuery from converting FormData into a query string
 				dataType: 'json',
 				success: function(data){
+					console.log(data);
+					
 					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
@@ -444,12 +459,26 @@ $(document).ready(function() {
 					);
 					$btn.button("reset");
 				},
-				error: function(data){
-					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
-					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
-					$btn.button("reset");
-				}
+				error: function(xhr, status, error) {
+			        // Log the error details
+			        console.error("XHR Error:", xhr);
+			        console.error("Status:", status);
+			        console.error("Error:", error);
+
+			        // Attempt to parse and log the response text
+			        try {
+			            var errorResponse = JSON.parse(xhr.responseText);
+			            console.log("Parsed Error Response:", errorResponse);
+			        } catch (e) {
+			            console.error("Error parsing JSON:", e);
+			            console.error("Raw Response Text:", xhr.responseText); // Log the raw response for debugging
+			        }
+
+			        // If you want to display more details in a DOM element
+			        $("#response .message").html("<strong>Error:</strong> " + xhr.status + " " + xhr.statusText);
+			        $("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+			        $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+			    }
 
 			});
 		}
@@ -661,17 +690,24 @@ $(document).ready(function() {
 
    		var $btn = $("#action_update_product").button("loading");
 
+		// Ensure `this` is the form element
+        var formElement = $('#update_product')[0]; // Get the raw DOM form element
+        var formData = new FormData(formElement); // Create FormData object
+
         jQuery.ajax({
 
         	url: 'response.php',
             type: 'POST', 
-            data: $("#update_product").serialize(),
+			data: formData,
+	        contentType: false, // Prevent jQuery from overriding content type
+	        processData: false, // Prevent jQuery from converting FormData into a query string
             dataType: 'json', 
             success: function(data){
 				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
 				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 				$btn.button("reset");
+				location.reload();
 			},
 			error: function(data){
 				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);

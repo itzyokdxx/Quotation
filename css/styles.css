@@ -165,3 +165,7 @@ strong.shipping {
 .login-form {
   margin-top: 100px;
 }
+
+.hidden-input {
+  display: none !important;
+}

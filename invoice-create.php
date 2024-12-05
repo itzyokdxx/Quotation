@@ -205,8 +205,10 @@ include('functions.php');
 							<strong>TAX:</strong>
 						</div>
 						<div class="col-xs-3">
-							<?php echo CURRENCY ?><span class="invoice-vat" data-enable-vat="<?php echo ENABLE_VAT ?>" data-vat-rate="<?php echo VAT_RATE ?>" data-vat-method="<?php echo VAT_INCLUDED ?>">0.00</span>
-							<input type="hidden" name="invoice_vat" id="invoice_vat">
+							<div class="input-group input-group-sm">
+								<span class="input-group-addon"><?php echo CURRENCY ?></span>
+								<input type="text" class="form-control calculate" id="invoice_vat" name="invoice_vat" aria-describedby="sizing-addon1" placeholder="0.00">
+							</div>
 						</div>
 					</div>
 					<?php } ?>

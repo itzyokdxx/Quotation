@@ -2,6 +2,10 @@
 
 include_once('includes/config.php');
 
+require 'vendor/autoload.php'; // Include the Composer autoloader
+
+use Intervention\Image\ImageManagerStatic as Image;
+
 // show PHP errors
 ini_set('display_errors', 1);
 
@@ -485,58 +489,101 @@ if($action == 'update_customer') {
 
 // Update product
 if($action == 'update_product') {
+	try {
+        // Collect form data
+        $productId = isset($_POST['id']) ? $_POST['id'] : '';
+        $productName = isset($_POST['product_name']) ? $_POST['product_name'] : '';
+        $productDesc = isset($_POST['product_desc']) ? $_POST['product_desc'] : '';
+        $productPrice = isset($_POST['product_price']) ? $_POST['product_price'] : '';
+        $productOldImage = isset($_POST['product_image_old']) ? $_POST['product_image_old'] : '';
 
-	// output any connection error
-	if ($mysqli->connect_error) {
-	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-	}
+        // Check if a file was uploaded
+        if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] == 0) {
 
-	// invoice product information
-	$getID = $_POST['id']; // id
-	$product_name = $_POST['product_name']; // product name
-	$product_desc = $_POST['product_desc']; // product desc
-	$product_price = $_POST['product_price']; // product price
+            $imagePath = "uploads/" . $productOldImage;
+            // Check if the image file exists and delete it
+            if (!file_exists($imagePath)) {
+                throw new Exception("Error: Image file does not exist.");
+            } else {
+                if (!unlink($imagePath)) {
+                    throw new Exception("Error: Could not delete the image.");
+                }
+            }
 
-	// the query
-	$query = "UPDATE products SET
-				product_name = ?,
-				product_desc = ?,
-				product_price = ?
-			 WHERE product_id = ?
-			";
+            $file = $_FILES['product_image'];
+    
+		    // Allowed file extensions
+		    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+		    $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-	/* Prepare statement */
-	$stmt = $mysqli->prepare($query);
-	if($stmt === false) {
-	  trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
-	}
+		    // Check if the file extension is allowed
+		    if (in_array($file_extension, $allowed_extensions)) {
 
-	/* Bind parameters. TYpes: s = string, i = integer, d = double,  b = blob */
-	$stmt->bind_param(
-		'ssss',
-		$product_name,$product_desc,$product_price,$getID
-	);
+		        // Define the target directory and filename
+		        $target_dir = "uploads/";
+		        $filename = "product_" . date('YmdHis') . "." . $file_extension;
+		        $file_path = $target_dir . $filename;
 
-	//execute the query
-	if($stmt->execute()){
-	    //if saving success
-		echo json_encode(array(
-			'status' => 'Success',
-			'message'=> 'Material has been updated successfully!'
-		));
+		        // Move the file to the uploads directory
+		        if (move_uploaded_file($file['tmp_name'], $file_path)) {
+		            
+		            // Resize the image using Intervention Image (resize to 800px width)
+		            $img = Image::make($file_path)->resize(100, 100, function ($constraint) {
+		                $constraint->aspectRatio();
+		                $constraint->upsize(); // Prevent image from being upsized
+		            });
 
-	} else {
-	    //if unable to create new record
-	    echo json_encode(array(
-	    	'status' => 'Error',
-	    	//'message'=> 'There has been an error, please try again.'
-	    	'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
-	    ));
-	}
+		            // Save the resized image
+		            $img->save($file_path);
+		        } else {
+		        	throw new Exception("Error: Failed to move the uploaded file.");
+		        }
+
+		    } else {
+		        throw new Exception("Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.");
+		    }
+
+            // Database insert query
+            $product_image = $filename;  // Store the image filename
+        } else {
+        	$product_image = $productOldImage;
+        }
+
+        // Prepare SQL query
+        $query = "UPDATE products SET product_name = ?, product_desc = ?, product_price = ?, product_image = ? WHERE product_id = ?";
+
+        // Prepare statement
+        $stmt = $mysqli->prepare($query);
+        if ($stmt === false) {
+            throw new Exception('SQL Error: ' . $mysqli->error);
+        }
+
+        // Bind parameters. 's' = string, 'i' = integer, 'd' = double, 'b' = blob
+        $stmt->bind_param('sssss', $productName, $productDesc, $productPrice, $product_image, $productId);
+
+        // Execute query
+        if ($stmt->execute()) {
+            // Success response
+            echo json_encode(array(
+                'status' => 'Success',
+                'message' => 'Material has been updated successfully!'
+            ));
+        } else {
+            // Error response
+            throw new Exception('Database error: ' . $stmt->error);
+        }
+
+
+    } catch (Exception $e) {
+        // Catch any exception and display the error message
+        echo json_encode(array(
+            'status' => 'Error',
+            'message' => 'Error: ' . $e->getMessage()
+        ));
+    }
 
 	//close database connection
 	$mysqli->close();
-	
 }
 
 
@@ -771,51 +818,85 @@ if($action == 'login') {
 
 // Adding new product
 if($action == 'add_product') {
+	try {
+        // Collect form data
+        $productName = isset($_POST['product_name']) ? $_POST['product_name'] : '';
+        $productDesc = isset($_POST['product_desc']) ? $_POST['product_desc'] : '';
+        $productPrice = isset($_POST['product_price']) ? $_POST['product_price'] : '';
 
-	$product_name = $_POST['product_name'];
-	$product_desc = $_POST['product_desc'];
-	$product_price = $_POST['product_price'];
+        // Check if a file was uploaded
+        if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] == 0) {
+            $file = $_FILES['product_image'];
+    
+		    // Allowed file extensions
+		    $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+		    $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-	//our insert query query
-	$query  = "INSERT INTO products
-				(
-					product_name,
-					product_desc,
-					product_price
-				)
-				VALUES (
-					?, 
-                	?,
-                	?
-                );
-              ";
+		    // Check if the file extension is allowed
+		    if (in_array($file_extension, $allowed_extensions)) {
 
-    header('Content-Type: application/json');
+		        // Define the target directory and filename
+		        $target_dir = "uploads/";
+		        $filename = "product_" . date('YmdHis') . "." . $file_extension;
+		        $file_path = $target_dir . $filename;
 
-	/* Prepare statement */
-	$stmt = $mysqli->prepare($query);
-	if($stmt === false) {
-	  trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
-	}
+		        // Move the file to the uploads directory
+		        if (move_uploaded_file($file['tmp_name'], $file_path)) {
+		            
+		            // Resize the image using Intervention Image (resize to 800px width)
+		            $img = Image::make($file_path)->resize(100, 100, function ($constraint) {
+		                $constraint->aspectRatio();
+		                $constraint->upsize(); // Prevent image from being upsized
+		            });
 
-	/* Bind parameters. TYpes: s = string, i = integer, d = double,  b = blob */
-	$stmt->bind_param('sss',$product_name,$product_desc,$product_price);
+		            // Save the resized image
+		            $img->save($file_path);
+		        } else {
+		        	throw new Exception("Error: Failed to move the uploaded file.");
+		        }
 
-	if($stmt->execute()){
-	    //if saving success
-		echo json_encode(array(
-			'status' => 'Success',
-			'message'=> 'Material has been added successfully!'
-		));
+		    } else {
+		        throw new Exception("Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.");
+		    }
 
-	} else {
-	    //if unable to create new record
-	    echo json_encode(array(
-	    	'status' => 'Error',
-	    	//'message'=> 'There has been an error, please try again.'
-	    	'message' => 'There has been an error, please try again.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
-	    ));
-	}
+            // Database insert query
+            $product_image = $filename;  // Store the image filename
+
+            // Prepare SQL query
+            $query = "INSERT INTO products (product_name, product_desc, product_price, product_image) VALUES (?, ?, ?, ?)";
+
+            // Prepare statement
+            $stmt = $mysqli->prepare($query);
+            if ($stmt === false) {
+                throw new Exception('SQL Error: ' . $mysqli->error);
+            }
+
+            // Bind parameters. 's' = string, 'i' = integer, 'd' = double, 'b' = blob
+            $stmt->bind_param('ssss', $productName, $productDesc, $productPrice, $product_image);
+
+            // Execute query
+            if ($stmt->execute()) {
+                // Success response
+                echo json_encode(array(
+                    'status' => 'Success',
+                    'message' => 'Material has been added successfully!'
+                ));
+            } else {
+                // Error response
+                throw new Exception('Database error: ' . $stmt->error);
+            }
+
+        } else {
+            throw new Exception("No valid file uploaded or file upload error: " . $_FILES['product_image']['error']);
+        }
+
+    } catch (Exception $e) {
+        // Catch any exception and display the error message
+        echo json_encode(array(
+            'status' => 'Error',
+            'message' => 'Error: ' . $e->getMessage()
+        ));
+    }
 
 	//close database connection
 	$mysqli->close();

@@ -23,6 +23,7 @@ if ($result) {
         $product_name = $row['product_name']; // product name
         $product_desc = $row['product_desc']; // product description
         $product_price = $row['product_price']; // product price
+        $product_image = $row['product_image']; // product image
     }
 }
 
@@ -45,7 +46,7 @@ $mysqli->close();
                 <h4>Editing Material</h4>
             </div>
             <div class="panel-body form-group form-group-sm">
-                <form method="post" id="update_product">
+                <form method="post" id="update_product" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="update_product">
                     <input type="hidden" name="id" value="<?php echo $getID; ?>">
                     <div class="row">
@@ -60,6 +61,16 @@ $mysqli->close();
                                 <span class="input-group-addon">₱</span> <!-- Peso sign -->
                                 <input type="text" name="product_price" class="form-control required" placeholder="0.00" aria-describedby="sizing-addon1" value="<?php echo $product_price; ?>">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 margin-top">
+                            <label for="product_image">Upload Image:</label>
+                            <img src="uploads/<?php echo $product_image; ?>" onclick="$('#product_image').click();">
+                        </div>
+                        <div class="col-xs-12 margin-top">
+                            <input type="file" id="product_image" name="product_image" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+                            <input type="hidden" name="product_image_old" value="<?php echo $product_image; ?>">
                         </div>
                     </div>
                     <div class="row">

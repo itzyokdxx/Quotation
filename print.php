@@ -72,8 +72,9 @@ $subtotal = 0;
 foreach ($items as $item) {
     $subtotal += $item['quantity'] * $item['unit_price'];
 }
-$taxAmount = $subtotal * VAT_PERCENTAGE; // Calculate tax
-$totalAmountWithTax = $subtotal + $taxAmount; // Add tax to total
+//$taxAmount = $subtotal * VAT_PERCENTAGE; // Calculate tax
+$taxAmount = $vat; // Calculate tax
+$totalAmountWithTax = $subtotal + $taxAmount + $shipping; // Add tax to total
 
 // Sample data for the invoice
 $invoiceData = [
@@ -165,6 +166,10 @@ foreach ($items as $item) {
 // Subtotal Row
 $pdf->Cell(150, 10, 'Subtotal', 1, 0, 'R');
 $pdf->Cell(40, 10, number_format($subtotal, 2), 1, 1, 'C');
+
+// Tax Row
+$pdf->Cell(150, 10, 'Shipping', 1, 0, 'R');
+$pdf->Cell(40, 10, number_format($shipping, 2), 1, 1, 'C');
 
 // Tax Row
 $pdf->Cell(150, 10, 'Tax (' . (VAT_PERCENTAGE * 100) . '%)', 1, 0, 'R');

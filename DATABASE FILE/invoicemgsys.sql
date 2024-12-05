@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2024 at 07:04 PM
+-- Generation Time: Dec 05, 2024 at 08:06 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,7 +69,9 @@ INSERT INTO `customers` (`id`, `invoice`, `name`, `email`, `address_1`, `address
 (85, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
 (86, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
 (87, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(88, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092');
+(88, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
+(89, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092'),
+(90, '11', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092');
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,9 @@ INSERT INTO `invoices` (`id`, `invoice`, `invoice_date`, `invoice_due_date`, `su
 (94, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (95, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (96, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(97, '10', '01/10/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open');
+(97, '10', '01/10/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
+(98, '10', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 20.00, 130.00, '', 'quote', 'open'),
+(99, '11', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 25.00, 135.00, '', 'quote', 'open');
 
 -- --------------------------------------------------------
 
@@ -157,7 +161,9 @@ INSERT INTO `invoice_items` (`id`, `invoice`, `product`, `qty`, `price`, `discou
 (170, '10', 'tettst', 1, 70.00, 0.00, 70.00),
 (171, '10', 'tettst', 1, 70.00, 0.00, 70.00),
 (172, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(173, '10', 'tettst', 1, 70.00, 0.00, 70.00);
+(173, '10', 'tettst', 1, 70.00, 0.00, 70.00),
+(174, '10', 'etet', 1, 100.00, 0.00, 100.00),
+(176, '11', 'eetet', 1, 100.00, 0.00, 100.00);
 
 -- --------------------------------------------------------
 
@@ -169,36 +175,43 @@ CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
   `product_name` text NOT NULL,
   `product_desc` text NOT NULL,
-  `product_price` decimal(10,2) DEFAULT NULL
+  `product_price` decimal(10,2) DEFAULT NULL,
+  `product_image` text DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `product_price`) VALUES
-(996, 'Foam Boards', '3mm (20x30 in)', 275.00),
-(993, 'PVC Boards', '10mm (4x8 ft)', 2800.00),
-(989, 'Acrylic Sheets', '1.5mm (4x6 in)', 110.00),
-(990, 'Acrylic Sheets', '3mm (4x8 ft)', 3850.00),
-(991, 'Acrylic Sheets', '5mm (4x8 ft)', 5500.00),
-(992, 'PVC Boards', '5mm (4x8 ft)', 1600.00),
-(994, 'Vinyl Stickers', 'Per roll (24 in x 5 m)', 1400.00),
-(995, 'Laminated Films', 'Per roll (12 in x 100 m)', 1100.00),
-(988, 'PVC Boards', '3mm (4x8 ft)', 1100.00),
-(997, 'Foam Boards', '5mm (4x8 ft)', 2100.00),
-(998, 'Pull-Up Stands', 'Standard size (33x80 in)', 3850.00),
-(999, 'Pull-Up Stands', 'Wide size (36x92 in)', 5500.00),
-(1000, 'Dye Sublimation Prints', 'Per square foot', 330.00),
-(1001, 'Reflective Stickers', 'Per square foot', 250.00),
-(1002, 'Opal Acrylic Sheets', '1.5mm (4x6 ft)', 990.00),
-(1003, 'PP Sticker', 'Per roll ', 1162.50),
-(1004, 'Laminated Film Gloss', 'Per roll', 2185.00),
-(1005, 'Cyno #2', '10 botts', 1400.00),
-(1006, 'Dye PP Sticker Matte', 'Per roll', 1750.00),
-(1007, 'asd', 'asdas', 100.00),
-(1008, 'test', 'test', 100.00),
-(1009, 'test', 'test', 100.00);
+INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `product_price`, `product_image`) VALUES
+(996, 'Foam Boards', '3mm (20x30 in)', 275.00, NULL),
+(993, 'PVC Boards', '10mm (4x8 ft)', 2800.00, NULL),
+(989, 'Acrylic Sheets', '1.5mm (4x6 in)', 110.00, NULL),
+(990, 'Acrylic Sheets', '3mm (4x8 ft)', 3850.00, NULL),
+(991, 'Acrylic Sheets', '5mm (4x8 ft)', 5500.00, NULL),
+(992, 'PVC Boards', '5mm (4x8 ft)', 1600.00, NULL),
+(994, 'Vinyl Stickers', 'Per roll (24 in x 5 m)', 1400.00, NULL),
+(995, 'Laminated Films', 'Per roll (12 in x 100 m)', 1100.00, NULL),
+(988, 'PVC Boards', '3mm (4x8 ft)', 1100.00, NULL),
+(997, 'Foam Boards', '5mm (4x8 ft)', 2100.00, NULL),
+(998, 'Pull-Up Stands', 'Standard size (33x80 in)', 3850.00, NULL),
+(999, 'Pull-Up Stands', 'Wide size (36x92 in)', 5500.00, NULL),
+(1000, 'Dye Sublimation Prints', 'Per square foot', 330.00, NULL),
+(1001, 'Reflective Stickers', 'Per square foot', 250.00, NULL),
+(1002, 'Opal Acrylic Sheets', '1.5mm (4x6 ft)', 990.00, NULL),
+(1003, 'PP Sticker', 'Per roll ', 1162.50, NULL),
+(1004, 'Laminated Film Gloss', 'Per roll', 2185.00, NULL),
+(1005, 'Cyno #2', '10 botts', 1400.00, NULL),
+(1006, 'Dye PP Sticker Matte', 'Per roll', 1750.00, NULL),
+(1007, 'asd', 'asdas', 100.00, NULL),
+(1008, 'test', 'test', 100.00, NULL),
+(1009, 'test', 'test', 100.00, NULL),
+(1010, 'asd', 'asd', 100.00, NULL),
+(1011, 'asd', 'asd', 100.00, NULL),
+(1012, 're', 're', 1.10, ''),
+(1013, 'asd', 'asd', 1.10, 'product_20241205191711.jpg'),
+(1014, 're', 're', 1.10, 'product_20241205191752.jpg'),
+(1016, 'test', 'test', 1.50, 'product_20241205194323.jpg');
 
 -- --------------------------------------------------------
 
@@ -315,25 +328,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1010;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1017;
 
 --
 -- AUTO_INCREMENT for table `store_customers`
