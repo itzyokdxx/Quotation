@@ -235,6 +235,7 @@ function getProducts() {
 
 		print '<table class="table table-striped table-hover table-bordered" id="data-table"><thead><tr>
 
+				<th>ID</th>
 				<th>Materials</th>
 				<th>Description</th>
 				<th>Price</th>
@@ -246,6 +247,7 @@ function getProducts() {
 
 		    print '
 			    <tr>
+					<td>'.$row["product_id"].'</td>
 					<td>'.$row["product_name"].'</td>
 				    <td>'.$row["product_desc"].'</td>
 				    <td>₱'.$row["product_price"].'</td>
@@ -290,6 +292,7 @@ function getUsers() {
 
 		print '<table class="table table-striped table-hover table-bordered" id="data-table"><thead><tr>
 
+				<th>ID</th>
 				<th>Name</th>
 				<th>Username</th>
 				<th>Email</th>
@@ -302,6 +305,7 @@ function getUsers() {
 
 		    print '
 			    <tr>
+			    	<td>'.$row['id'].'</td>
 			    	<td>'.$row['name'].'</td>
 					<td>'.$row["username"].'</td>
 				    <td>'.$row["email"].'</td>
@@ -347,6 +351,7 @@ function getCustomers() {
 
 		print '<table class="table table-striped table-hover table-bordered" id="data-table"><thead><tr>
 
+				<th>ID</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone</th>
@@ -358,6 +363,7 @@ function getCustomers() {
 
 		    print '
 			    <tr>
+					<td>'.$row["id"].'</td>
 					<td>'.$row["name"].'</td>
 				    <td>'.$row["email"].'</td>
 				    <td>'.$row["phone"].'</td>
