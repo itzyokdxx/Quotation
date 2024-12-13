@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2024 at 08:06 PM
+-- Generation Time: Dec 13, 2024 at 05:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -71,7 +71,9 @@ INSERT INTO `customers` (`id`, `invoice`, `name`, `email`, `address_1`, `address
 (87, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
 (88, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
 (89, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092'),
-(90, '11', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092');
+(90, '11', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092'),
+(91, '12', 'test', 'test@test.com', '123 test', '', 'test', 'test', '9979', '12345', 'qwe', '098 qwe', '', 'qwe', 'qwe', '9944'),
+(92, '13', 'asd', 'asd@ads.com', 'asd', '', 'ads', 'asd', '999', '999999', 'asd', 'asd', '', 'ads', 'asd', '999');
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,7 @@ CREATE TABLE `invoices` (
 
 INSERT INTO `invoices` (`id`, `invoice`, `invoice_date`, `invoice_due_date`, `subtotal`, `shipping`, `discount`, `vat`, `total`, `notes`, `invoice_type`, `status`) VALUES
 (78, '2', '25/11/2024', '11/10/2024', 110.00, 0.00, 0.00, 13.20, 123.20, '', 'quote', 'open'),
-(77, '1', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'paid'),
+(77, '1', '25/11/2024', '11/10/2024', 70.00, 20.00, 0.00, 100.00, 190.00, '', 'quote', 'paid'),
 (82, '4', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (81, '3', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (83, '5', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
@@ -119,7 +121,9 @@ INSERT INTO `invoices` (`id`, `invoice`, `invoice_date`, `invoice_due_date`, `su
 (96, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (97, '10', '01/10/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
 (98, '10', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 20.00, 130.00, '', 'quote', 'open'),
-(99, '11', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 25.00, 135.00, '', 'quote', 'open');
+(99, '11', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 25.00, 135.00, '', 'quote', 'open'),
+(100, '12', '13/12/2024', '14/12/2024', 1000.00, 10.00, 0.00, 10.00, 1020.00, '', 'quote', 'open'),
+(101, '13', '13/12/2024', '14/12/2024', 1000.00, 10.00, 0.00, 5.00, 1015.00, '', 'quote', 'open');
 
 -- --------------------------------------------------------
 
@@ -152,7 +156,7 @@ INSERT INTO `invoice_items` (`id`, `invoice`, `product`, `qty`, `price`, `discou
 (158, '5', 'tettst', 1, 70.00, 0.00, 70.00),
 (156, '3', 'tettst', 1, 70.00, 0.00, 70.00),
 (157, '4', 'tettst', 1, 70.00, 0.00, 70.00),
-(166, '1', 'tested', 1, 70.00, 0.00, 70.00),
+(178, '1', 'tested', 1, 70.00, 0.00, 70.00),
 (153, '2', 'Acrylic Sheets - 1.5mm (4x6 in)', 1, 110.00, 0.00, 110.00),
 (136, '2', 'asd', 1, 70.00, 0.00, 70.00),
 (167, '10', 'tettst', 1, 70.00, 0.00, 70.00),
@@ -163,7 +167,9 @@ INSERT INTO `invoice_items` (`id`, `invoice`, `product`, `qty`, `price`, `discou
 (172, '10', 'tettst', 1, 70.00, 0.00, 70.00),
 (173, '10', 'tettst', 1, 70.00, 0.00, 70.00),
 (174, '10', 'etet', 1, 100.00, 0.00, 100.00),
-(176, '11', 'eetet', 1, 100.00, 0.00, 100.00);
+(176, '11', 'eetet', 1, 100.00, 0.00, 100.00),
+(179, '12', 'aaaaaaaaaaaa - aaaaaaaaaaa', 1, 1000.00, 0.00, 1000.00),
+(180, '13', 'aaaaaaaaaaaa - aaaaaaaaaaa', 1, 1000.00, 0.00, 1000.00);
 
 -- --------------------------------------------------------
 
@@ -211,7 +217,9 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `product_p
 (1012, 're', 're', 1.10, ''),
 (1013, 'asd', 'asd', 1.10, 'product_20241205191711.jpg'),
 (1014, 're', 're', 1.10, 'product_20241205191752.jpg'),
-(1016, 'test', 'test', 1.50, 'product_20241205194323.jpg');
+(1016, 'test', 'test', 1.50, 'product_20241205194323.jpg'),
+(1017, 'asd', 'asd', 10.00, 'product_20241207073732.jpg'),
+(1018, 'aaaaaaaaaaaa', 'aaaaaaaaaaa', 1000.00, 'product_20241207073808.jpg');
 
 -- --------------------------------------------------------
 
@@ -255,7 +263,8 @@ INSERT INTO `store_customers` (`id`, `name`, `email`, `address_1`, `address_2`, 
 (63, 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1070 Crisostomo St., Sampaloc, Manila', '1070 Crisostomo St., Sampaloc, Manila', 'Norcross', 'US', '30092'),
 (64, 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1070 Crisostomo St., Sampaloc, Manila', '1070 Crisostomo St., Sampaloc, Manila', 'Norcross', 'US', '30092'),
 (65, 'Krysstin Dyan Manaog Nunag', 'krysstindyan.nunag@tup.edu.ph', '1070 Crisostomo St., Sampaloc, Manila', '1143 Kuhl Avenue', 'Metro Manila', 'US', '1008', '8520000010', 'Albert M Dunford', '1070 Crisostomo St., Sampaloc, Manila', '1070 Crisostomo St., Sampaloc, Manila', 'Norcross', 'US', '30092'),
-(66, 'Krysstin Dyan Manaog Nunag', 'krysstindyan.nunag@tup.edu.ph', '1070 Crisostomo St., Sampaloc, Manila', '1143 Kuhl Avenue', 'Metro Manila', 'US', '1008', '8520000010', 'Albert M Dunford', '1070 Crisostomo St., Sampaloc, Manila', '1070 Crisostomo St., Sampaloc, Manila', 'Norcross', 'US', '30092');
+(66, 'Krysstin Dyan Manaog Nunag', 'krysstindyan.nunag@tup.edu.ph', '1070 Crisostomo St., Sampaloc, Manila', '1143 Kuhl Avenue', 'Metro Manila', 'US', '1008', '8520000010', 'Albert M Dunford', '1070 Crisostomo St., Sampaloc, Manila', '1070 Crisostomo St., Sampaloc, Manila', 'Norcross', 'US', '30092'),
+(67, 'asd', 'asd@ads.com', 'asd', '', 'ads', 'asd', '999', '999999', 'asd', 'asd', '', 'ads', 'asd', '999');
 
 -- --------------------------------------------------------
 
@@ -328,31 +337,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1017;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1019;
 
 --
 -- AUTO_INCREMENT for table `store_customers`
 --
 ALTER TABLE `store_customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`
