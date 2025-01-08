@@ -63,7 +63,7 @@ include_once("includes/config.php");
                 echo "$query->num_rows";
                 ?></h3>
 
-              <p>Pending Bills</p>
+              <p>Pending Quotes</p>
             </div>
             <div class="icon">
               <i class="ion ion-load-a"></i>
@@ -153,7 +153,7 @@ include_once("includes/config.php");
                 echo "$query->num_rows";
                 ?></h3>
 
-              <p>Paid Bills</p>
+              <p>Paid Quotes</p>
             </div>
             <div class="icon">
               <i class="ion ion-ios-paper"></i>
