@@ -116,6 +116,7 @@
           <ul class="treeview-menu">
             <li><a href="invoice-create.php"><i class="fa fa-plus"></i>Create Quotation</a></li>
             <li><a href="invoice-list.php"><i class="fa fa-cog"></i>Manage Quotations</a></li>
+            <li><a href="#" class="download-csv"><i class="fa fa-download"></i>Download CSV</a></li>
           </ul>
         </li>
         <!-- Menu 2 -->
