@@ -21,7 +21,7 @@ include('functions.php');
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-12">
-				    <a href="customer-add.php" class="btn btn-primary float-right">Add Customers</a>
+				    <a href="customer-add.php" class="btn btn-primary float-right">Add Customer</a>
 						<h4>Customers</h4>
 			    </div>
 		    </div>

@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	// Invoice Type
 	$('#invoice_type').change(function() {
 		var invoiceType = $("#invoice_type option:selected").text();
@@ -580,10 +579,17 @@ $(document).ready(function() {
             type: 'POST', 
             data: productId,
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
 			},
 			error: function(data){
@@ -604,10 +610,17 @@ $(document).ready(function() {
             type: 'POST', 
             data: userId,
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
 			},
 			error: function(data){
@@ -628,10 +641,18 @@ $(document).ready(function() {
             type: 'POST', 
             data: userId,
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
+				$btn.button("reset");
 			},
 			error: function(data){
 				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
@@ -672,10 +693,17 @@ $(document).ready(function() {
             type: 'POST', 
             data: invoiceId,
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
 			},
 			error: function(data){
@@ -704,12 +732,18 @@ $(document).ready(function() {
 	        contentType: false, // Prevent jQuery from overriding content type
 	        processData: false, // Prevent jQuery from converting FormData into a query string
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
-				location.reload();
 			},
 			error: function(data){
 				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
@@ -731,10 +765,17 @@ $(document).ready(function() {
             type: 'POST', 
             data: $("#update_user").serialize(),
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
 			},
 			error: function(data){
@@ -757,10 +798,17 @@ $(document).ready(function() {
             type: 'POST', 
             data: $("#update_customer").serialize(),
             dataType: 'json', 
-            success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+            success: function(data){  				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
 				$btn.button("reset");
 			},
 			error: function(data){
@@ -785,16 +833,17 @@ $(document).ready(function() {
 			type: 'POST', 
 			data: $("#update_invoice").serialize(),
 			dataType: 'json', 
-			success: function(data) {
-				if (data && data.status) {
+			success: function(data) {  				
+				if (data.status == "Success") {
 					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 				} else {
-					// Handle unexpected structure in the response
-					$("#response .message").html("<strong>Error</strong>: Unexpected server response.");
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
 					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 				}
+
 				$btn.button("reset");
 			},
 			error: function(xhr) {
@@ -824,10 +873,18 @@ $(document).ready(function() {
    			type: 'POST',
    			data: action,
    			dataType: 'json',
-   			success: function(data){
-				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-				$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-				$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+   			success: function(data){   				
+				if (data.status == "Success") {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				} else {
+					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+					$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+				}
+
+				$btn.button("reset");
 			},
 			error: function(data){
 				$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
@@ -859,12 +916,18 @@ $(document).ready(function() {
 				data: $("#login_form").serialize(), // serializes the form's elements.
 				dataType: 'json',
 				success: function(data){
-					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
-					$btn.button("reset");
+					if (data.status == "Success") {
+						$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+						$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+						$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+						setTimeout(window.location = "dashboard.php", 2000);
+					} else {
+						$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
+						$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+						$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+					}
 
-					window.location = "dashboard.php";
+					$btn.button("reset");
 				},
 				error: function(data){
 					$("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);

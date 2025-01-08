@@ -5,19 +5,17 @@ include('functions.php');
 ?>
 
 <div class="row vertical-offset-100">
-	<div id="response" class="alert alert-success" style="display:none;">
-		<a href="#" class="close" data-dismiss="alert">&times;</a>
-		<div class="message"></div>
-	</div>
-
 	<div class="col-md-4 col-md-offset-4">
 		<div class="panel panel-default login-panel">
 		  	<div class="panel-heading panel-login">
 		  		<h1 class="text-center">
 					<img src="<?php echo COMPANY_LOGO ?>" class="img-responsive">
 				</h1>
-		    	
 		 	</div>
+			<div id="response" class="alert alert-success" style="display:none;">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				<div class="message"></div>
+			</div>
 		  	<div class="panel-body">
 		    	<form accept-charset="UTF-8" role="form" method="post" id="login_form">
 		    		<input type="hidden" name="action" value="login">

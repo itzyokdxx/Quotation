@@ -830,7 +830,7 @@ if($action == 'login') {
     $results = mysqli_query($mysqli,$query) or die (mysqli_error());
     $count = mysqli_num_rows($results);
 
-    if($count!="") {
+    if($count > 0) {
 		$row = $results->fetch_assoc();
 
 		$_SESSION['login_username'] = $row['username'];

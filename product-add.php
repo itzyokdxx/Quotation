@@ -40,7 +40,7 @@ include('header.php');
                     <div class="row">
                         <div class="col-xs-12 margin-top">
                             <label for="product_image">Upload Image:</label>
-                            <input type="file" id="product_image" name="product_image" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+                            <input type="file" id="product_image" name="product_image" class="form-control required" accept=".jpg, .jpeg, .png, .gif">
                         </div>
                     </div>
                     <div class="row">
