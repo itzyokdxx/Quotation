@@ -77,7 +77,7 @@ $mysqli->close();
                         <?php endif ?>
                         <div class="col-xs-12 margin-top">
                             <label for="product_image">Upload Image:</label>
-                            <input type="file" id="product_image" name="product_image" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+                            <input type="file" id="product_image" name="product_image" class="form-control required" accept=".jpg, .jpeg, .png, .gif">
                             <input type="hidden" name="product_image_old" value="<?php echo $product_image; ?>">
                         </div>
                     </div>
