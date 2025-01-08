@@ -253,9 +253,11 @@ $(document).ready(function() {
 
 	// enable date pickers for due date and invoice date
 	var dateFormat = $(this).attr('data-vat-rate');
+	var today = new Date();
 	$('#invoice_date, #invoice_due_date').datetimepicker({
 		showClose: false,
-		format: dateFormat
+		format: dateFormat,
+        minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()), // Restrict past dates
 	});
 
 	// copy customer details to shipping

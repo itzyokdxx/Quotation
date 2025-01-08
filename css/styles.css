@@ -70,6 +70,10 @@ body {
   margin-top: 0px !important;
 }
 
+.margin-right {
+  margin-right: 15px;
+}
+
 .padding-right {
   padding-right: 15px;
 }

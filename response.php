@@ -541,10 +541,10 @@ if($action == 'update_product') {
             $imagePath = "uploads/" . $productOldImage;
             // Check if the image file exists and delete it
             if (!file_exists($imagePath)) {
-                throw new Exception("Error: Image file does not exist.");
+                //throw new Exception("Error: Image file does not exist.");
             } else {
                 if (!unlink($imagePath)) {
-                    throw new Exception("Error: Could not delete the image.");
+                    //throw new Exception("Error: Could not delete the image.");
                 }
             }
 

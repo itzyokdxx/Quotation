@@ -19,7 +19,12 @@ include('functions.php');
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>Customers</h4>
+				<div class="row">
+					<div class="col-xs-12">
+				    <a href="customer-add.php" class="btn btn-primary float-right">Add Customers</a>
+						<h4>Customers</h4>
+			    </div>
+		    </div>
 			</div>
 			<div class="panel-body form-group form-group-sm">
 				<?php getCustomers(); ?>

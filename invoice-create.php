@@ -202,12 +202,12 @@ include('functions.php');
 					<?php if (ENABLE_VAT == true) { ?>
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-5">
-							<strong>TAX:</strong>
+							<strong class="shipping">TAX:</strong>
 						</div>
 						<div class="col-xs-3">
 							<div class="input-group input-group-sm">
 								<span class="input-group-addon"><?php echo CURRENCY ?></span>
-								<input type="text" class="form-control calculate" id="invoice_vat" name="invoice_vat" aria-describedby="sizing-addon1" placeholder="0.00">
+								<input type="text" class="form-control calculate shipping" id="invoice_vat" name="invoice_vat" aria-describedby="sizing-addon1" placeholder="0.00">
 							</div>
 						</div>
 					</div>
@@ -222,20 +222,14 @@ include('functions.php');
 						</div>
 					</div>
 				</div>
-
-		
-					<div class="col-xs-6">
-						
-					</div>
-
-					<div class="col-xs-6 margin-top btn-group">
-						<input type="submit" id="action_create_invoice" class="btn btn-success float-right" value="Create Quote" data-loading-text="Creating...">
-					</div>
-			
-
 			</div>
 			<div class="row">
-				
+				<div class="col-xs-12 margin-top">
+					<div class="float-right">
+						<button type="submit" id="action_create_invoice" class="btn btn-success" value="Create Quote" data-loading-text="Creating...">Create Quote</button>
+                    </div>
+		            <a href="invoice-list.php" class="btn btn-primary">Back</a>
+				</div>
 			</div>
 		</form>
 
@@ -244,7 +238,7 @@ include('functions.php');
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title">Select Product</h4>
+		        <h4 class="modal-title">Select Material</h4>
 		      </div>
 		      <div class="modal-body">
 				<?php popProductsList(); ?>

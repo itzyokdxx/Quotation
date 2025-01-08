@@ -71,8 +71,9 @@ $mysqli->close();
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12 margin-top btn-group">
-							<input type="submit" id="action_update_user" class="btn btn-success float-right" value="Edit user" data-loading-text="Editing...">
+						<div class="col-xs-12 margin-top">
+							<button type="submit" id="action_update_user" class="btn btn-success float-right" value="Edit user" data-loading-text="Editing...">Edit user</button>
+		    				<a href="user-list.php" class="btn btn-primary">Back</a>
 						</div>
 					</div>
 				</form>

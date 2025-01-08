@@ -235,19 +235,28 @@ function getProducts() {
 
 		print '<table class="table table-striped table-hover table-bordered" id="data-table"><thead><tr>
 
-				<th>ID</th>
-				<th>Materials</th>
-				<th>Description</th>
-				<th>Price</th>
-				<th>Action</th>
+				<th width="5%">ID</th>
+				<th width="10%">Image</th>
+				<th width="20%">Materials</th>
+				<th width="30%">Description</th>
+				<th width="30%">Price</th>
+				<th width="5%">Action</th>
 
 			  </tr></thead><tbody>';
 
 		while($row = $results->fetch_assoc()) {
+			$image = "";
+			if ($row["product_image"]) {
+				$image = 'uploads/'.$row["product_image"];
+				if (!file_exists($image)) {
+					$image = "";
+				}
+			}
 
 		    print '
 			    <tr>
 					<td>'.$row["product_id"].'</td>
+					<td><img src="'.$image.'"></td>
 					<td>'.$row["product_name"].'</td>
 				    <td>'.$row["product_desc"].'</td>
 				    <td>₱'.$row["product_price"].'</td>

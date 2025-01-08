@@ -20,7 +20,12 @@ include('functions.php');
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>Manage Quotations</h4>
+				<div class="row">
+					<div class="col-xs-12">
+				    <a href="invoice-create.php" class="btn btn-primary float-right">Add Quote</a>
+						<h4>Manage Quotations</h4>
+					</div>
+				</div>
 			</div>
 			<div class="panel-body form-group form-group-sm">
 				<?php getInvoices(); ?>

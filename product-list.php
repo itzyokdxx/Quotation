@@ -19,7 +19,12 @@ include('functions.php');
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>Material Information</h4>
+				<div class="row">
+					<div class="col-xs-12">
+				    <a href="product-add.php" class="btn btn-primary float-right">Add Material</a>
+						<h4>Material Information</h4>
+					</div>
+				</div>
 			</div>
 			<div class="panel-body form-group form-group-sm">
 				<?php getProducts(); ?>

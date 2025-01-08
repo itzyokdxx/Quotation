@@ -294,12 +294,12 @@ $mysqli->close();
 					<?php if (ENABLE_VAT == true) { ?>
 					<div class="row">
 						<div class="col-xs-3 col-xs-offset-6">
-							<strong>TAX:</strong>
+							<strong class="shipping">TAX:</strong>
 						</div>
 						<div class="col-xs-3">
 							<div class="input-group input-group-sm">
 								<span class="input-group-addon"><?php echo CURRENCY ?></span>
-								<input type="text" class="form-control calculate" name="invoice_vat" id="invoice_vat" aria-describedby="sizing-addon1" placeholder="0.00" value="<?php echo $invoice_vat; ?>">
+								<input type="text" class="form-control calculate shipping" name="invoice_vat" id="invoice_vat" aria-describedby="sizing-addon1" placeholder="0.00" value="<?php echo $invoice_vat; ?>">
 							</div>
 						</div>
 					</div>
@@ -317,8 +317,9 @@ $mysqli->close();
 
 			</div>
 			<div class="row">
-				<div class="col-xs-12 margin-top btn-group">
-					<input type="submit" id="action_edit_invoice" class="btn btn-success float-right" value="Update Quote" data-loading-text="Updating...">
+				<div class="col-xs-12 margin-top">
+					<button type="submit" id="action_edit_invoice" class="btn btn-success float-right" value="Update Quote" data-loading-text="Updating...">Update Quote</button>
+		            <a href="invoice-list.php" class="btn btn-primary">Back</a>
 				</div>
 			</div>
 		</form>
@@ -328,7 +329,7 @@ $mysqli->close();
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title">Select an item</h4>
+		        <h4 class="modal-title">Select Material</h4>
 		      </div>
 		      <div class="modal-body">
 				<?php popProductsList(); ?>

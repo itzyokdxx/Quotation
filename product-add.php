@@ -44,8 +44,9 @@ include('header.php');
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 margin-top btn-group">
-                            <input type="submit" id="action_add_product" class="btn btn-success float-right" value="Add Material" data-loading-text="Adding...">
+                        <div class="col-xs-12 margin-top">
+                            <button type="submit" id="action_add_product" class="btn btn-success" value="Add Material" data-loading-text="Adding...">Add Material</button>
+                            <a href="product-list.php" class="btn btn-primary float-right">Back</a>
                         </div>
                     </div>
                 </div>

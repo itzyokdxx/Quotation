@@ -135,8 +135,9 @@ $mysqli->close();
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 margin-top btn-group">
-			<input type="submit" id="action_update_customer" class="btn btn-success float-right" value="Update Customer" data-loading-text="Updating...">
+		<div class="col-xs-12 margin-top">
+			<button type="submit" id="action_update_customer" class="btn btn-success float-right" value="Update Customer" data-loading-text="Updating...">Update Customer</button>
+		    <a href="customer-list.php" class="btn btn-primary">Back</a>
 		</div>
 	</div>
 </form>

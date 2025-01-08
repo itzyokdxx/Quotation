@@ -51,12 +51,15 @@ $mysqli->close();
                     <input type="hidden" name="id" value="<?php echo $getID; ?>">
                     <div class="row">
                         <div class="col-xs-4">
+                            <label for="product_name">Product Name:</label>
                             <input type="text" class="form-control required" name="product_name" placeholder="Enter material name" value="<?php echo $product_name; ?>">
                         </div>
                         <div class="col-xs-4">
+                            <label for="product_desc">Description:</label>
                             <input type="text" class="form-control required" name="product_desc" placeholder="Enter material description" value="<?php echo $product_desc; ?>">
                         </div>
                         <div class="col-xs-4">
+                            <label for="product_price">Price:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">₱</span> <!-- Peso sign -->
                                 <input type="text" name="product_price" class="form-control required" placeholder="0.00" aria-describedby="sizing-addon1" value="<?php echo $product_price; ?>">
@@ -64,18 +67,24 @@ $mysqli->close();
                         </div>
                     </div>
                     <div class="row">
+                        <?php if ($product_image): ?>
+                            <div class="col-xs-12 margin-top">
+                                <label>Product Image:</label>
+                                <div class="input-group">
+                                    <img src="uploads/<?php echo $product_image; ?>" onclick="$('#product_image').click();">
+                                </div>
+                            </div>
+                        <?php endif ?>
                         <div class="col-xs-12 margin-top">
                             <label for="product_image">Upload Image:</label>
-                            <img src="uploads/<?php echo $product_image; ?>" onclick="$('#product_image').click();">
-                        </div>
-                        <div class="col-xs-12 margin-top">
                             <input type="file" id="product_image" name="product_image" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                             <input type="hidden" name="product_image_old" value="<?php echo $product_image; ?>">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 margin-top btn-group">
-                            <input type="submit" id="action_update_product" class="btn btn-success float-right" value="Update material" data-loading-text="Updating...">
+                        <div class="col-xs-12 margin-top">
+                            <button type="submit" id="action_update_product" class="btn btn-success" value="Update material" data-loading-text="Updating...">Update material</button>
+                            <a href="product-list.php" class="btn btn-primary float-right">Back</a>
                         </div>
                     </div>
                 </form>

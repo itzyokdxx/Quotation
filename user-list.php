@@ -18,7 +18,12 @@ include('functions.php');
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>Users</h4>
+				<div class="row">
+					<div class="col-xs-12">
+				    <a href="user-add.php" class="btn btn-primary float-right">Add User</a>
+						<h4>Users</h4>
+					</div>
+				</div>
 			</div>
 			<div class="panel-body form-group form-group-sm">
 				<?php getUsers(); ?>

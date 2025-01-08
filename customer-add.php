@@ -91,8 +91,9 @@ include('header.php');
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 margin-top btn-group">
-			<input type="submit" id="action_create_customer" class="btn btn-success float-right" value="Create Customer" data-loading-text="Creating...">
+		<div class="col-xs-12 margin-top">
+			<button type="submit" id="action_create_customer" class="btn btn-success float-right" value="Create Customer" data-loading-text="Creating...">Create Customer</button>
+		    <a href="customer-list.php" class="btn btn-primary">Back</a>
 		</div>
 	</div>
 </form>
