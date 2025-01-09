@@ -72,7 +72,7 @@ if ($action == 'download_csv'){
 		die('Error : ('.$mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
  
-    $file_name = 'invoice-export-'.date('d-m-Y').'.csv';   // file name
+    $file_name = 'quotation-export-'.date('d-m-Y').'.csv';   // file name
     $file_path = 'downloads/'.$file_name; // file path
 
 	$file = fopen($file_path, "w"); // open a file in write mode
@@ -218,6 +218,7 @@ if ($action == 'create_invoice'){
 
 	// invoice customer information
 	// billing
+	$customer_id = (!empty($_POST['customer_id'])) ? $_POST['customer_id'] : ''; // customer id
 	$customer_name = $_POST['customer_name']; // customer name
 	$customer_address_1 = $_POST['customer_address_1']; // customer address
 	$customer_town = $_POST['customer_town']; // customer country
@@ -238,9 +239,50 @@ if ($action == 'create_invoice'){
 
 	$customer_address_2_ship = ""; // customer address (shipping)
 
+	if (empty($_POST['customer_id'])) {
+		// insert customer details into database
+		$ins_qry = "INSERT INTO store_customers (
+						name,
+						email,
+						address_1,
+						address_2,
+						town,
+						county,
+						postcode,
+						phone,
+						name_ship,
+						address_1_ship,
+						address_2_ship,
+						town_ship,
+						county_ship,
+						postcode_ship
+					) VALUES (
+						'".$customer_name."',
+						'".$customer_email."',
+						'".$customer_address_1."',
+						'".$customer_address_2."',
+						'".$customer_town."',
+						'".$customer_county."',
+						'".$customer_postcode."',
+						'".$customer_phone."',
+						'".$customer_name_ship."',
+						'".$customer_address_1_ship."',
+						'".$customer_address_2_ship."',
+						'".$customer_town_ship."',
+						'".$customer_county_ship."',
+						'".$customer_postcode_ship."'
+					);
+				";
+
+		if ($mysqli->query($ins_qry)) {
+			$customer_id = $mysqli->insert_id;
+		}
+	}
+	
 	// insert customer details into database
 	$query = "INSERT INTO customers (
 					invoice,
+					store_customer,
 					name,
 					email,
 					address_1,
@@ -257,40 +299,7 @@ if ($action == 'create_invoice'){
 					postcode_ship
 				) VALUES (
 					'".$invoice_number."',
-					'".$customer_name."',
-					'".$customer_email."',
-					'".$customer_address_1."',
-					'".$customer_address_2."',
-					'".$customer_town."',
-					'".$customer_county."',
-					'".$customer_postcode."',
-					'".$customer_phone."',
-					'".$customer_name_ship."',
-					'".$customer_address_1_ship."',
-					'".$customer_address_2_ship."',
-					'".$customer_town_ship."',
-					'".$customer_county_ship."',
-					'".$customer_postcode_ship."'
-				);
-			";
-
-	// insert customer details into database
-	$query .= "INSERT INTO store_customers (
-					name,
-					email,
-					address_1,
-					address_2,
-					town,
-					county,
-					postcode,
-					phone,
-					name_ship,
-					address_1_ship,
-					address_2_ship,
-					town_ship,
-					county_ship,
-					postcode_ship
-				) VALUES (
+					'".$customer_id."',
 					'".$customer_name."',
 					'".$customer_email."',
 					'".$customer_address_1."',
@@ -641,6 +650,7 @@ if($action == 'update_invoice') {
 
 	// invoice customer information
 	// billing
+	$customer_id = (!empty($_POST['customer_id'])) ? $_POST['customer_id'] : ''; // customer id
 	$customer_name = $_POST['customer_name']; // customer name
 	$customer_email = $_POST['customer_email']; // customer email
 	$customer_address_1 = $_POST['customer_address_1']; // customer address
@@ -710,6 +720,28 @@ if($action == 'update_invoice') {
 	";
 	$mysqli->query($query);
 	
+	if ($customer_id) {
+		// insert customer details into database
+		$query = "UPDATE store_customers SET
+				name = '".$customer_name."',
+				email = '".$customer_email."',
+				address_1 = '".$customer_address_1."',
+				address_2 = '".$customer_address_2."',
+				town = '".$customer_town."',
+				county = '".$customer_county."',
+				postcode = '".$customer_postcode."',
+				phone = '".$customer_phone."',
+				name_ship = '".$customer_name_ship."',
+				address_1_ship = '".$customer_address_1_ship."',
+				address_2_ship = '".$customer_address_2_ship."',
+				town_ship = '".$customer_town_ship."',
+				county_ship = '".$customer_county_ship."',
+				postcode_ship = '".$customer_postcode_ship."'
+			WHERE id = '".$customer_id."'
+		";
+		$mysqli->query($query);
+	}
+
 	$query = "DELETE FROM invoice_items WHERE invoice = ".$id.";";
 	$mysqli->query($query);
 

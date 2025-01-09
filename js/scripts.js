@@ -175,6 +175,7 @@ $(document).ready(function() {
 
    	$(document).on('click', ".customer-select", function(e) {
 
+		    var customer_id = $(this).attr('data-customer-id');
 		    var customer_name = $(this).attr('data-customer-name');
 		    var customer_email = $(this).attr('data-customer-email');
 		    var customer_phone = $(this).attr('data-customer-phone');
@@ -192,6 +193,7 @@ $(document).ready(function() {
 		    var customer_county_ship = $(this).attr('data-customer-county-ship');
 		    var customer_postcode_ship = $(this).attr('data-customer-postcode-ship');
 
+		    $('#customer_id').val(customer_id);
 		    $('#customer_name').val(customer_name);
 		    $('#customer_email').val(customer_email);
 		    $('#customer_phone').val(customer_phone);
@@ -554,7 +556,7 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#create_invoice").before().html(
-						"<a href='./invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new invoice</a>"+
+						"<a href='./invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new quotation</a>"+
 						"<a href='./invoice-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");

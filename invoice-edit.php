@@ -15,7 +15,7 @@ if ($mysqli->connect_error) {
 }
 
 // the query
-$query = "SELECT p.*, i.*, c.*
+$query = "SELECT p.*, i.*, c.*,
 			FROM invoice_items p 
 			JOIN invoices i ON i.invoice = p.invoice
 			JOIN customers c ON c.invoice = i.invoice
@@ -26,6 +26,7 @@ $result = mysqli_query($mysqli, $query);
 // mysqli select query
 if($result) {
 	while ($row = mysqli_fetch_assoc($result)) {
+		$customer_id = $row['store_customer']; // customer name
 		$customer_name = $row['name']; // customer name
 		$customer_email = $row['email']; // customer email
 		$customer_address_1 = $row['address_1']; // customer address
@@ -120,6 +121,7 @@ $mysqli->close();
 							<div class="clear"></div>
 						</div>
 						<div class="panel-body form-group form-group-sm">
+							<input type="hidden" name="customer_id" name="customer_id" value="<?php echo $customer_id; ?>">
 							<div class="row">
 								<div class="col-xs-6">
 									<div class="form-group">
