@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2024 at 05:58 AM
+-- Generation Time: Jan 15, 2025 at 09:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `invoice` varchar(255) NOT NULL,
+  `store_customer` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address_1` varchar(255) NOT NULL,
@@ -45,35 +46,6 @@ CREATE TABLE `customers` (
   `county_ship` varchar(255) NOT NULL,
   `postcode_ship` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `invoice`, `name`, `email`, `address_1`, `address_2`, `town`, `county`, `postcode`, `phone`, `name_ship`, `address_1_ship`, `address_2_ship`, `town_ship`, `county_ship`, `postcode_ship`) VALUES
-(80, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(79, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(78, '9', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(77, '8', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(76, '7', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(75, '6', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(72, '3', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(73, '4', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(68, '1', 'Allan Deer1', 'allande@mail.com', '1702 Modoc Alley', '', 'White Bird', 'US', '55550', '8520001450', 'Allan Deer2', '1702 Modoc Alley1', '1702 Modoc Alley', 'White Bird', 'US', '55550'),
-(69, '2', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(74, '5', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(81, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(82, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(83, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(84, '10', 'Allan Deer', 'allande@mail.com', '1702 Modoc Alley', '', 'White Bird', 'US', '55550', '8520001450', 'Allan Deer', '1702 Modoc Alley', '1702 Modoc Alley', 'White Bird', 'US', '55550'),
-(85, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(86, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(87, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(88, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '1143 Kuhl Avenue', 'Norcross', 'US', '30092'),
-(89, '10', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092'),
-(90, '11', 'Albert M Dunford', 'albd@mail.com', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092', '8520000010', 'Albert M Dunford', '1143 Kuhl Avenue', '', 'Norcross', 'US', '30092'),
-(91, '12', 'test', 'test@test.com', '123 test', '', 'test', 'test', '9979', '12345', 'qwe', '098 qwe', '', 'qwe', 'qwe', '9944'),
-(92, '13', 'asd', 'asd@ads.com', 'asd', '', 'ads', 'asd', '999', '999999', 'asd', 'asd', '', 'ads', 'asd', '999');
 
 -- --------------------------------------------------------
 
@@ -96,35 +68,6 @@ CREATE TABLE `invoices` (
   `status` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `invoices`
---
-
-INSERT INTO `invoices` (`id`, `invoice`, `invoice_date`, `invoice_due_date`, `subtotal`, `shipping`, `discount`, `vat`, `total`, `notes`, `invoice_type`, `status`) VALUES
-(78, '2', '25/11/2024', '11/10/2024', 110.00, 0.00, 0.00, 13.20, 123.20, '', 'quote', 'open'),
-(77, '1', '25/11/2024', '11/10/2024', 70.00, 20.00, 0.00, 100.00, 190.00, '', 'quote', 'paid'),
-(82, '4', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(81, '3', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(83, '5', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(84, '6', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(85, '7', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(86, '8', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(87, '9', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(88, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(89, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(90, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(91, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(92, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(93, '10', '26/11/2024', '25/11/2024', 110.00, 0.00, 0.00, 13.20, 123.20, '', 'quote', 'open'),
-(94, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(95, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(96, '10', '25/11/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(97, '10', '01/10/2024', '11/10/2024', 70.00, 0.00, 0.00, 8.40, 78.40, '', 'quote', 'open'),
-(98, '10', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 20.00, 130.00, '', 'quote', 'open'),
-(99, '11', '06/12/2024', '07/12/2024', 100.00, 10.00, 0.00, 25.00, 135.00, '', 'quote', 'open'),
-(100, '12', '13/12/2024', '14/12/2024', 1000.00, 10.00, 0.00, 10.00, 1020.00, '', 'quote', 'open'),
-(101, '13', '13/12/2024', '14/12/2024', 1000.00, 10.00, 0.00, 5.00, 1015.00, '', 'quote', 'open');
-
 -- --------------------------------------------------------
 
 --
@@ -140,36 +83,6 @@ CREATE TABLE `invoice_items` (
   `discount` decimal(10,2) NOT NULL,
   `subtotal` decimal(10,2) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `invoice_items`
---
-
-INSERT INTO `invoice_items` (`id`, `invoice`, `product`, `qty`, `price`, `discount`, `subtotal`) VALUES
-(163, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(164, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(165, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(162, '9', 'tettst', 1, 70.00, 0.00, 70.00),
-(161, '8', 'tettst', 1, 70.00, 0.00, 70.00),
-(160, '7', 'tettst', 1, 70.00, 0.00, 70.00),
-(159, '6', 'tettst', 1, 70.00, 0.00, 70.00),
-(158, '5', 'tettst', 1, 70.00, 0.00, 70.00),
-(156, '3', 'tettst', 1, 70.00, 0.00, 70.00),
-(157, '4', 'tettst', 1, 70.00, 0.00, 70.00),
-(178, '1', 'tested', 1, 70.00, 0.00, 70.00),
-(153, '2', 'Acrylic Sheets - 1.5mm (4x6 in)', 1, 110.00, 0.00, 110.00),
-(136, '2', 'asd', 1, 70.00, 0.00, 70.00),
-(167, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(168, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(169, '10', 'Acrylic Sheets - 1.5mm (4x6 in)', 1, 110.00, 0.00, 110.00),
-(170, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(171, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(172, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(173, '10', 'tettst', 1, 70.00, 0.00, 70.00),
-(174, '10', 'etet', 1, 100.00, 0.00, 100.00),
-(176, '11', 'eetet', 1, 100.00, 0.00, 100.00),
-(179, '12', 'aaaaaaaaaaaa - aaaaaaaaaaa', 1, 1000.00, 0.00, 1000.00),
-(180, '13', 'aaaaaaaaaaaa - aaaaaaaaaaa', 1, 1000.00, 0.00, 1000.00);
 
 -- --------------------------------------------------------
 
@@ -337,19 +250,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
