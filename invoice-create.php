@@ -62,7 +62,7 @@ include('functions.php');
 							<div class="clear"></div>
 						</div>
 						<div class="panel-body form-group form-group-sm">
-							<input type="hidden" name="customer_id" name="customer_id">
+							<input type="hidden" id="customer_id" name="customer_id">
 							<div class="row">
 								<div class="col-xs-6">
 									<div class="form-group">
@@ -84,10 +84,10 @@ include('functions.php');
 										<input type="email" class="form-control copy-input required" name="customer_email" id="customer_email" placeholder="E-mail Address" aria-describedby="sizing-addon1" tabindex="2">
 									</div>
 								    <div class="form-group">
-								    	<input type="text" class="form-control margin-bottom copy-input required" name="customer_county" id="customer_county" placeholder="City" tabindex="6">
+								    	<input type="text" class="form-control margin-bottom copy-input required" name="customer_county" id="customer_county" placeholder="City" tabindex="4">
 								    </div>
 								    <div class="form-group no-margin-bottom">
-								    	<input type="text" class="form-control required" name="customer_phone" id="customer_phone" placeholder="Phone Number" tabindex="8">
+								    	<input type="text" class="form-control required" name="customer_phone" id="customer_phone" placeholder="Phone Number" tabindex="6">
 									</div>
 								</div>
 							</div>
@@ -107,7 +107,7 @@ include('functions.php');
 									</div>
 								
 									<div class="form-group no-margin-bottom">
-										<input type="text" class="form-control required" name="customer_county_ship" id="customer_county_ship" placeholder="City" tabindex="13">
+										<input type="text" class="form-control required" name="customer_county_ship" id="customer_county_ship" placeholder="City" tabindex="11">
 									</div>
 								</div>
 								<div class="col-xs-6">
@@ -118,7 +118,7 @@ include('functions.php');
 										<input type="text" class="form-control margin-bottom required" name="customer_town_ship" id="customer_town_ship" placeholder="Country" tabindex="12">							
 								    </div>
 								    <div class="form-group no-margin-bottom">
-								    	<input type="text" class="form-control required" name="customer_postcode_ship" id="customer_postcode_ship" placeholder="Zip Code" tabindex="14">
+								    	<input type="text" class="form-control required" name="customer_postcode_ship" id="customer_postcode_ship" placeholder="Zip Code" tabindex="13">
 									</div>
 								</div>
 							</div>
