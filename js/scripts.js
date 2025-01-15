@@ -554,7 +554,7 @@ $(document).ready(function() {
 					$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 					$("#create_invoice").before().html(
-						"<a href='./invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new invoice</a>"+
+						"<a href='./invoice-create.php' class='btn btn-primary' style='margin-right: 10px;'>Create new quotation</a>"+
 						"<a href='./invoice-list.php' class='btn btn-default'>Back to List</a>"
 					);
 					$btn.button("reset");
