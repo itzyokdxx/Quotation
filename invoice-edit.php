@@ -337,9 +337,9 @@ $mysqli->close();
 				<?php popProductsList(); ?>
 
 		      	<div id="selected-product" class="margin-bottom" style="display: none;">
-		      		<label class="control-label">Product Image:</label>
+		      		<label class="control-label">Material Image:</label>
 		      		<br>
-				    <img id="product-image" src="" alt="Product Image" style="width: 150px; height: auto;">
+				    <img id="product-image" src="" alt="Material Image" style="width: 150px; height: auto;">
 				</div>
 		      </div>
 		      <div class="modal-footer">
