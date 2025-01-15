@@ -62,6 +62,7 @@ include('functions.php');
 							<div class="clear"></div>
 						</div>
 						<div class="panel-body form-group form-group-sm">
+							<input type="hidden" name="customer_id" name="customer_id">
 							<div class="row">
 								<div class="col-xs-6">
 									<div class="form-group">
