@@ -137,10 +137,11 @@ function popProductsList() {
 	$results = $mysqli->query($query);
 
 	if($results) {
-		echo '<select class="form-control item-select">';
+		echo '<select class="form-control item-select margin-bottom">';
 		while($row = $results->fetch_assoc()) {
+			$product_image = ($row['product_image']) ? 'uploads/' . $row['product_image'] : "";
 
-		    print '<option value="'.$row['product_price'].'">'.$row["product_name"].' - '.$row["product_desc"].'</option>';
+		    print '<option value="'.$row['product_price'].'" data-image="'.$product_image.'">'.$row["product_name"].' - '.$row["product_desc"].'</option>';
 		}
 		echo '</select>';
 

@@ -154,11 +154,25 @@ $(document).ready(function() {
 
 		    updateTotals(product);
         	calculateTotal();
-
    		});
 
    		return false;
 
+   	});
+
+   	$('#insert').on('change', function () {
+        // Get the selected option's data-image attribute
+        var selectedImage = $('#insert').find("option:selected").attr('data-image');
+        var productImage = $('#product-image');
+
+        if (selectedImage) {
+            // Update the image src and show the image
+            productImage.attr('src', selectedImage)
+            $('#selected-product').show();
+        } else {
+            // Hide the image if no option or invalid option is selected
+            $('#selected-product').hide();
+        }
    	});
 
    	$(document).on('click', ".select-customer", function(e) {

@@ -243,6 +243,12 @@ include('functions.php');
 		      </div>
 		      <div class="modal-body">
 				<?php popProductsList(); ?>
+
+		      	<div id="selected-product" class="margin-bottom" style="display: none;">
+		      		<label class="control-label">Product Image:</label>
+		      		<br>
+				    <img id="product-image" src="" alt="Product Image" style="width: 150px; height: auto;">
+				</div>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" data-dismiss="modal" class="btn btn-primary" id="selected">Add</button>
