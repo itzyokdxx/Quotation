@@ -3,7 +3,7 @@
 	include('includes/config.php');
 
 	// Connect to the database
-	$mysqli = new mysqli('localhost:3307', 'root', '', 'invoicemgsys');
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
 
 	session_start();
 
