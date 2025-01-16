@@ -51,7 +51,7 @@ $mysqli->close();
                     <input type="hidden" name="id" value="<?php echo $getID; ?>">
                     <div class="row">
                         <div class="col-xs-4">
-                            <label for="product_name">Product Name:</label>
+                            <label for="product_name">Material Name:</label>
                             <input type="text" class="form-control required" name="product_name" placeholder="Enter material name" value="<?php echo $product_name; ?>">
                         </div>
                         <div class="col-xs-4">
