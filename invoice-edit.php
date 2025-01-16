@@ -1,9 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+=======
+>>>>>>> e07723a57e6845d2aa6946a85f56dcdae41f5a22
 include('header.php');
 include('functions.php');
 
@@ -18,17 +21,21 @@ if ($mysqli->connect_error) {
 }
 
 // the query
-$query = "SELECT p.*, i.*, c.*,
-			FROM invoice_items p 
-			JOIN invoices i ON i.invoice = p.invoice
+$query = "SELECT  
+				i.invoice, i.invoice_date, i.invoice_due_date, i.subtotal, i.shipping, i.discount, i.vat,
+				i.total, i.notes, i.invoice_type, i.status,
+				c.store_customer, c.name, c.email, c.address_1, c.address_2, c.town, c.county,
+				c.postcode, c.phone, c.name_ship, c.address_1_ship, c.address_2_ship, c.town_ship,
+				c.county_ship, c.postcode_ship
+			FROM invoices i
 			JOIN customers c ON c.invoice = i.invoice
-			WHERE p.invoice = '" . $mysqli->real_escape_string($getID) . "'";
+			WHERE i.invoice = '" . $mysqli->real_escape_string($getID) . "'";
 
 $result = mysqli_query($mysqli, $query);
 
 // mysqli select query
 if($result) {
-	while ($row = mysqli_fetch_assoc($result)) {
+	while ($row = mysqli_fetch_assoc($result)) {		
 		$customer_id = $row['store_customer']; // customer name
 		$customer_name = $row['name']; // customer name
 		$customer_email = $row['email']; // customer email
@@ -49,7 +56,7 @@ if($result) {
 
 		// invoice details
 		$invoice_number = $row['invoice']; // invoice number
-		$custom_email = $row['custom_email']; // invoice custom email body
+		//$custom_email = $row['custom_email']; // invoice custom email body
 		$invoice_date = $row['invoice_date']; // invoice date
 		$invoice_due_date = $row['invoice_due_date']; // invoice due date
 		$invoice_subtotal = $row['subtotal']; // invoice sub-total
