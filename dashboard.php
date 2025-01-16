@@ -111,7 +111,7 @@ include_once("includes/config.php");
                 echo "$query->num_rows";
                 ?></h3>
 
-              <p>Total Products</p>
+              <p>Total Materials</p>
             </div>
             <div class="icon">
               <i class="ion ion-social-dropbox"></i>
