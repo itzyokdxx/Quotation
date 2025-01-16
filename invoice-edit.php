@@ -1,12 +1,4 @@
 <?php
-
-<<<<<<< HEAD
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-=======
->>>>>>> e07723a57e6845d2aa6946a85f56dcdae41f5a22
 include('header.php');
 include('functions.php');
 
